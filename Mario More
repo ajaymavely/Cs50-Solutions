@@ -1,0 +1,36 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+int n;
+{
+main :    
+    n = get_int("Height: "); //prompt to enter the height
+}
+while((n<=0) || (n>=9)) //select value between 1 to 8
+{
+    if((n>=9) || (n<=0)) //goto step 9 if the entered variable is not within 1 to 8
+    goto main;
+}
+for(int r=1; r<=n; r++) //r represents the row
+{
+    for(int i=n-r; i>=1; i--) //i represents the "space"
+    {
+        printf(" "); //printing "space" ,or to test print "-" at the left side
+    }
+    for(int j=1; j<=r; j++) //j represents the "#"
+    {
+        printf("#"); //printing "#" at left side
+    }
+        for(int i=2; i>=1; i--) //to get 2 space in between
+    {
+        printf(" "); //printing 2 "space" ,or to test print 2 "-" at middle
+    }
+    for(int j=1; j<=r; j++) //to get inverted right angle at right side
+    {
+        printf("#"); //printing "#" at left side
+    }
+    printf("\n"); //new line
+}
+}
