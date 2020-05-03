@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+#include <cs50.h>
+
+int main() 
+{
+    float change;//float variable
+    do 
+    {
+main :
+        change = get_float("Change Owed : ");//ask for change until user gives a valid number (don't accept alphebets or non-negative numbers)
+        
+    } 
+    while (change < 0);
+
+    {
+        if(change <0)
+        goto main;
+    }
+    int dollar = floor(change);//convert dollars for cents
+    int cents = ((change + 0.0001) - dollar) * 100;
+    cents += (dollar * 100);
+
+    int quarters = cents / 25;//verify how much quartes
+    cents = cents % 25;
+
+    int dimes = cents / 10;//verify how much dimes
+    cents = cents % 10;
+
+    int nickels = cents / 5; //verify how much nickels
+    cents = cents % 5;
+    int pennies = cents;
+
+    int coins = quarters + dimes + nickels + pennies;//sum total coins
+
+    printf("%d\n", coins);//print the number of coins in new line
+
+    return 0;
+}
