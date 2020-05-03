@@ -1,0 +1,13 @@
+  
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+
+{
+    string s = get_string("What is your name\n"); //Enter Your Name
+    
+    {
+        printf("hello, %s\n", s); //here is the place were we mix our name with hello.
+    }
+}
