@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+#include <math.h>
+
+int main(void)
+{
+    string text = get_string("Text: ");
+    int letterscount = 0; //Defines letters count
+    int wordcount = 1;    //Define word count
+    int sentencecount = 0;//Define sentence count
+
+    for (int i = 0; i < strlen(text); i++) //Here from the string we extarct all data for counting letter, word and sentence.
+    {
+       if ((text[i] >= 'a' && text[i] <= 'z') || (text[i] >= 'A' && text[i] <= 'Z')) // Counts all the Uppercase and lowercase alphebets in the given text (To get the letter count)
+       {
+           letterscount++;
+       }
+       else if (text[i] == ' ') //Conts the number of spaces in the given text (To get the word count)
+       {
+           wordcount++;
+       }
+       else if (text[i] == '.' || text[i] == '!' || text[i] == '?') //Counts the full stops, exclamation mark and question marks in the given text (To count the sentence)
+       {
+           sentencecount++;
+       }
+    }
+    //printf("letters: %i; words: %i; sentences: %i\n", letterscount, wordcount, sentencecount); //This line was use for the first test to view the number of letters, words and sentences only.(remove// to get the number of letter, words and sentences).
+
+    float grade = 0.0588 * (100 * (float) letterscount / (float) wordcount) - 0.296 * (100 * (float) sentencecount / (float) wordcount) - 15.8; //Using the formula for converting the numvers of letter, word and sentences into Grades(From the )
+    if (grade < 16 && grade >= 0)
+    {
+        printf("Grade %i\n", (int) round(grade)); //Print the grades between 0 to 16
+    }
+    else if (grade >= 16)
+    {
+        printf("Grade 16+\n"); //For grades above 16
+    }
+    else
+    {
+        printf("Before Grade 1\n"); //For grades less than 1
+    }
+
+}
