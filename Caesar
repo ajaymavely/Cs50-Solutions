@@ -1,0 +1,61 @@
+#include <string.h>
+#include <ctype.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, string argv[])
+{
+
+//check there is only 1 arguments and it should be a number else Prompt user ./caesar key
+if (argc == 2 && isdigit(*argv[1]))
+
+  {
+
+//checking weather there is  non-numeric key
+    int f = strlen(argv[1]); //f represents the lenght of argv (how many number)
+    for (int i = 0; i < f; i ++)
+    {
+      int m = isalpha(argv[1][i]);//m is just a imaginary variable to know is there any alphabets or any other characters other than number.
+      if (m != 0)
+      {
+          printf("Usage: ./caesar key \n");//prompt user to enter key again if there is non numeric value.
+          return 1;
+      }
+    }
+    int k = atoi(argv[1]); // get the ceasar KEY value convert into integar
+
+    string s = get_string("plaintext: "); // get text
+    printf("ciphertext: "); // print out cipher
+
+    for (int i = 0, n = strlen(s) ; i < n; i++)// checking the plain text letter by letter
+    {
+
+        if (s[i] >= 'a' && s[i] <= 'z')//checking if it is lowercase 97 = a to 112 = z and if it + 13 characters along.
+        {
+           printf("%c", (((s[i] - 'a') + k) % 26) + 'a');//print out lowercase letter in the plain text by adding the key
+        } // if it it between uppercase A and C
+        else if (s[i] >= 'A' && s[i] <= 'Z')
+        {
+            printf("%c", (((s[i] - 'A') + k) % 26) + 'A');//print out uppercase letters in the plain text by adding the key
+        }
+
+        else
+
+        {
+            printf("%c", s[i]);//Print all the other characters other than alphabets as same as entered in the plain text
+        }
+    }
+
+    printf("\n");
+    return 0;
+  }
+
+  else
+  {
+
+      printf("Usage: ./caesar key\n");
+      return 1;
+
+  }
+}
